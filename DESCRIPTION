@@ -1,10 +1,11 @@
 Package: Assignment2
-Title: What the Package Does (one line, title case)
+Title: this the package I submitted for programming assignment 
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Andrea", "Curotti", email = "andrea.curotti@gmail.com", role = c("aut", "cre"))
+Description: Not much just an assignment
 Depends: R (>= 3.3.2)
-License: What license is it under?
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+Suggests: testthat
