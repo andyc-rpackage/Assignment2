@@ -11,3 +11,5 @@ You can install Assignment2 from github with:
 devtools::install_github("Assignment2/andyc-rpackage")
 ```
 [travis badge] (https://travis-ci.org/andyc-rpackage/Assignment2.svg?branch=master)
+
+[travis build output] (https://travis-ci.org/andyc-rpackage/Assignment2/builds/203448412)
