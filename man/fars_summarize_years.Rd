@@ -19,6 +19,8 @@ This function summarizes the data corresponding to the input vector of years wit
 if an invalid year is defined in the input vector a warning message will be thrown
 }
 \examples{
-v<-c(2014,2015) d<-fars_summarize_years(v)
+v<-c(2014,2015) 
+d<-fars_summarize_years(v)
+
 
 }

@@ -7,7 +7,7 @@
 make_filename(year)
 }
 \arguments{
-\item{year:}{a string indicating the name of the file to read the data from}
+\item{year}{a string indicating the name of the file to read the data from}
 }
 \value{
 filename corresponding to the input year

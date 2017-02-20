@@ -2,19 +2,19 @@
 #' 
 #' This is a simple function to read data contained in a file
 #'
-#' @param filename: a string indicating the name of the file to read the data from
+#' @param filename a string indicating the name of the file to read the data from
 #'
 #' @return this function returns a dataframe containing the data stroed in the file
 #'
 #' @note if the input specified file doesn't exist the function will stop and throw a file not found error
 #' 
 #' @examples   
-#' fars_read("accident_2013.csv.bz2") 
-#' fars_read("accident_2014.csv.bz2")
+#' fn<-make_filename(2013)
+#' fars_read(fn)
 #'
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df 
-
+#' 
 #' @export
 #'
 fars_read <- function(filename) {
@@ -29,7 +29,7 @@ fars_read <- function(filename) {
 #' 
 #' This is a simple function returns a filename from a year
 #'
-#' @param year: a string indicating the name of the file to read the data from
+#' @param year a string indicating the name of the file to read the data from
 #'
 #' @return filename corresponding to the input year
 #'
@@ -41,7 +41,7 @@ fars_read <- function(filename) {
 
 make_filename <- function(year) {
         year <- as.integer(year)
-        sprintf("accident_%d.csv.bz2", year)
+        system.file("extdata",sprintf("accident_%d.csv.bz2", year),package = "Assignment2")
 }
 
 #' fars_read_years
@@ -54,10 +54,11 @@ make_filename <- function(year) {
 #'
 #' @note if an invalid year is defined in the input vector a warning message will be thrown
 #'
-#' @importFrom dplyr mutate select 
+#' @importFrom dplyr mutate select %>%
 #' 
 #' @examples 
-#' v<-c(2014,2015) d<-fars_read_years(v)
+#' v<-c(2014,2015)
+#' d<-fars_read_years(v)
 #'
 #' @export
 #'
@@ -85,11 +86,13 @@ fars_read_years <- function(years) {
 #'
 #' @note if an invalid year is defined in the input vector a warning message will be thrown
 #'
-#' @importFrom dplyr bind_rows group_by summarize 
+#' @importFrom dplyr bind_rows group_by summarize %>%
 #' @importFrom tidyr spread 
 #' 
 #' @examples 
-#' v<-c(2014,2015) d<-fars_summarize_years(v)
+#' v<-c(2014,2015) 
+#' d<-fars_summarize_years(v)
+#' 
 #'
 #' @export
 #'
@@ -106,7 +109,7 @@ fars_summarize_years <- function(years) {
 #' 
 #' This function plots the spatial distribution of fatalities corresponding to the input state number and year 
 #'
-#' @param years a vector of years
+#' @param year a vector of years
 #'
 #' @param state.num number indicative of the state
 #'
@@ -114,11 +117,13 @@ fars_summarize_years <- function(years) {
 #'
 #' @note if an invalid year or state number is defined in the input a warning message will be thrown
 #' 
-#' @importFrom dplyr filter 
+#' 
+#' @importFrom dplyr filter
 #' @importFrom maps map
 #' @importFrom graphics points
 #' 
 #' @examples  
+#' library(maps)
 #' fars_map_state(10,2014)
 #'
 #' @export

@@ -19,6 +19,7 @@ This function reads multiple data files identified by their year, one per each e
 if an invalid year is defined in the input vector a warning message will be thrown
 }
 \examples{
-v<-c(2014,2015) d<-fars_read_years(v)
+v<-c(2014,2015)
+d<-fars_read_years(v)
 
 }

@@ -7,7 +7,7 @@
 fars_read(filename)
 }
 \arguments{
-\item{filename:}{a string indicating the name of the file to read the data from}
+\item{filename}{a string indicating the name of the file to read the data from}
 }
 \value{
 this function returns a dataframe containing the data stroed in the file
@@ -20,7 +20,7 @@ if the input specified file doesn't exist the function will stop and throw a fil
 }
 \examples{
   
-fars_read("accident_2013.csv.bz2") 
-fars_read("accident_2014.csv.bz2")
+fn<-make_filename(2013)
+fars_read(fn)
 
 }

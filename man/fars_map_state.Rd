@@ -9,7 +9,7 @@ fars_map_state(state.num, year)
 \arguments{
 \item{state.num}{number indicative of the state}
 
-\item{years}{a vector of years}
+\item{year}{a vector of years}
 }
 \value{
 graphical map of the spatial distribution of fatalisties for agive state in a given year
@@ -22,6 +22,7 @@ if an invalid year or state number is defined in the input a warning message wil
 }
 \examples{
  
+library(maps)
 fars_map_state(10,2014)
 
 }
