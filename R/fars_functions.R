@@ -101,7 +101,7 @@ fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
         dplyr::bind_rows(dat_list) %>% 
                 dplyr::group_by_(quote(YEAR), quote(MONTH) ) %>% 
-                dplyr::summarize(ntot = n()) %>%
+                dplyr::summarize_( ntot =  ~n()) %>%
                 tidyr::spread_(key_="YEAR",value_="ntot")
 }
 
