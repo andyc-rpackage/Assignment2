@@ -1,6 +1,6 @@
 # Assignment2
 
-The goal of Assignment2 is to combine skills of creating, writing, documenting and testing an R package with releasing that package on GitHub. This file also includes the Travis badge as a proof of building success without errors or warnings. Only one note is left related to no visible bindings for global variable such as STATE,MONTH, etc 
+The goal of Assignment2 is to combine skills of creating, writing, documenting and testing an R package with releasing that package on GitHub. This file also includes the Travis badge as a proof of building success without errors or warnings. Only one note is left related  
 
 ## Installation
 
@@ -12,4 +12,4 @@ devtools::install_github("Assignment2/andyc-rpackage")
 ```
 [travis badge] (https://travis-ci.org/andyc-rpackage/Assignment2.svg?branch=master)
 
-[travis build output] (https://travis-ci.org/andyc-rpackage/Assignment2/builds/203448412)
+[travis build output] (https://travis-ci.org/andyc-rpackage/Assignment2/)
