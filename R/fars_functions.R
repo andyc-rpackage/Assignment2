@@ -63,14 +63,14 @@ make_filename <- function(year) {
 #' @export
 #'
 fars_read_years <- function(years) {
-        lapply(years, function(year) {
-                file <- make_filename(year)
+        lapply(years, function(cyear) {
+                file <- make_filename(cyear)
                 tryCatch({
                         dat <- fars_read(file)
-                        dplyr::mutate(dat, year = year) %>% 
-                                dplyr::select(MONTH, year)
+                        dplyr::mutate_(dat, quote(YEAR) == cyear) %>% 
+                                dplyr::select_(quote(MONTH), quote(YEAR))
                 }, error = function(e) {
-                        warning("invalid year: ", year)
+                        warning("invalid year: ", cyear)
                         return(NULL)
                 })
         })
@@ -100,9 +100,9 @@ fars_read_years <- function(years) {
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
         dplyr::bind_rows(dat_list) %>% 
-                dplyr::group_by(year, MONTH) %>% 
-                dplyr::summarize(n = n()) %>%
-                tidyr::spread(year, n)
+                dplyr::group_by_(quote(YEAR), quote(MONTH) ) %>% 
+                dplyr::summarize(ntot = n()) %>%
+                tidyr::spread_(key_="YEAR",value_="ntot")
 }
 
 #' fars_map_state
@@ -133,9 +133,9 @@ fars_map_state <- function(state.num, year) {
         data <- fars_read(filename)
         state.num <- as.integer(state.num)
 
-        if(!(state.num %in% unique(data$STATE)))
+        if(!(state.num %in% unique(eval(quote(STATE),data))))
                 stop("invalid STATE number: ", state.num)
-        data.sub <- dplyr::filter(data, STATE == state.num)
+        data.sub <- dplyr::filter(data, eval(quote(STATE)== state.num,data))
         if(nrow(data.sub) == 0L) {
                 message("no accidents to plot")
                 return(invisible(NULL))
